@@ -1,0 +1,3636 @@
+{
+  "contractName": "Authentication",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "users",
+      "outputs": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "isfarmer",
+          "type": "bool"
+        },
+        {
+          "name": "creditScore",
+          "type": "int256"
+        },
+        {
+          "name": "exists",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "login",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "_isFarmer",
+          "type": "bool"
+        },
+        {
+          "name": "_creditScore",
+          "type": "int256"
+        }
+      ],
+      "name": "signup",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_userAddr",
+          "type": "address"
+        }
+      ],
+      "name": "getUser",
+      "outputs": [
+        {
+          "name": "exists",
+          "type": "bool"
+        },
+        {
+          "name": "isFarmer",
+          "type": "bool"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b50610b3f806100206000396000f300608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680636f77926b14610067578063a6d491f014610139578063a87430ba146101b8578063b34e97e814610291575b600080fd5b34801561007357600080fd5b506100a8600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610321565b60405180841515151581526020018315151515815260200180602001828103825283818151815260200191508051906020019080838360005b838110156100fc5780820151818401526020810190506100e1565b50505050905090810190601f1680156101295780820380516001836020036101000a031916815260200191505b5094505050505060405180910390f35b34801561014557600080fd5b506101b6600480360381019080803590602001908201803590602001908080601f0160208091040260200160405190810160405280939291908181526020018383808284378201915050505050509192919290803515159060200190929190803590602001909291905050506104ae565b005b3480156101c457600080fd5b506101f9600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610684565b60405180806020018515151515815260200184815260200183151515158152602001828103825286818151815260200191508051906020019080838360005b83811015610253578082015181840152602081019050610238565b50505050905090810190601f1680156102805780820380516001836020036101000a031916815260200191505b509550505050505060405180910390f35b34801561029d57600080fd5b506102a6610766565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156102e65780820151818401526020810190506102cb565b50505050905090810190601f1680156103135780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6000806060600560008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060040160009054906101000a900460ff169250600560008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060010160009054906101000a900460ff169150600560008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156104a05780601f10610475576101008083540402835291602001916104a0565b820191906000526020600020905b81548152906001019060200180831161048357829003601f168201915b505050505090509193909250565b60a0604051908101604052808481526020018315158152602001828152602001600060405190808252806020026020018201604052801561050357816020015b60608152602001906001900390816104ee5790505b5081526020016001151581525060008082015181600001908051906020019061052d9291906108a3565b5060208201518160010160006101000a81548160ff021916908315150217905550604082015181600201556060820151816003019080519060200190610574929190610923565b5060808201518160040160006101000a81548160ff0219169083151502179055509050506000600560003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008201816000019080546001816001161561010002031660029004610600929190610983565b506001820160009054906101000a900460ff168160010160006101000a81548160ff02191690831515021790555060028201548160020155600382018160030190805461064e929190610a0a565b506004820160009054906101000a900460ff168160040160006101000a81548160ff021916908315150217905550905050505050565b6005602052806000526040600020600091509050806000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156107305780601f1061070557610100808354040283529160200191610730565b820191906000526020600020905b81548152906001019060200180831161071357829003601f168201915b5050505050908060010160009054906101000a900460ff16908060020154908060040160009054906101000a900460ff16905084565b6060600560003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060040160009054906101000a900460ff1615156107c357600080fd5b600560003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156108995780601f1061086e57610100808354040283529160200191610899565b820191906000526020600020905b81548152906001019060200180831161087c57829003601f168201915b5050505050905090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106108e457805160ff1916838001178555610912565b82800160010185558215610912579182015b828111156109115782518255916020019190600101906108f6565b5b50905061091f9190610a7a565b5090565b828054828255906000526020600020908101928215610972579160200282015b828111156109715782518290805190602001906109619291906108a3565b5091602001919060010190610943565b5b50905061097f9190610a9f565b5090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106109bc57805485556109f9565b828001600101855582156109f957600052602060002091601f016020900482015b828111156109f85782548255916001019190600101906109dd565b5b509050610a069190610a7a565b5090565b828054828255906000526020600020908101928215610a695760005260206000209182015b82811115610a685782829080546001816001161561010002031660029004610a58929190610983565b5091600101919060010190610a2f565b5b509050610a769190610a9f565b5090565b610a9c91905b80821115610a98576000816000905550600101610a80565b5090565b90565b610ac891905b80821115610ac45760008181610abb9190610acb565b50600101610aa5565b5090565b90565b50805460018160011615610100020316600290046000825580601f10610af15750610b10565b601f016020900490600052602060002090810190610b0f9190610a7a565b5b505600a165627a7a7230582062a74f74935578bba649cb0ba6d70ee7a8fca26ad012db4255a64c5925e8a98d0029",
+  "deployedBytecode": "0x608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680636f77926b14610067578063a6d491f014610139578063a87430ba146101b8578063b34e97e814610291575b600080fd5b34801561007357600080fd5b506100a8600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610321565b60405180841515151581526020018315151515815260200180602001828103825283818151815260200191508051906020019080838360005b838110156100fc5780820151818401526020810190506100e1565b50505050905090810190601f1680156101295780820380516001836020036101000a031916815260200191505b5094505050505060405180910390f35b34801561014557600080fd5b506101b6600480360381019080803590602001908201803590602001908080601f0160208091040260200160405190810160405280939291908181526020018383808284378201915050505050509192919290803515159060200190929190803590602001909291905050506104ae565b005b3480156101c457600080fd5b506101f9600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610684565b60405180806020018515151515815260200184815260200183151515158152602001828103825286818151815260200191508051906020019080838360005b83811015610253578082015181840152602081019050610238565b50505050905090810190601f1680156102805780820380516001836020036101000a031916815260200191505b509550505050505060405180910390f35b34801561029d57600080fd5b506102a6610766565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156102e65780820151818401526020810190506102cb565b50505050905090810190601f1680156103135780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6000806060600560008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060040160009054906101000a900460ff169250600560008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060010160009054906101000a900460ff169150600560008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156104a05780601f10610475576101008083540402835291602001916104a0565b820191906000526020600020905b81548152906001019060200180831161048357829003601f168201915b505050505090509193909250565b60a0604051908101604052808481526020018315158152602001828152602001600060405190808252806020026020018201604052801561050357816020015b60608152602001906001900390816104ee5790505b5081526020016001151581525060008082015181600001908051906020019061052d9291906108a3565b5060208201518160010160006101000a81548160ff021916908315150217905550604082015181600201556060820151816003019080519060200190610574929190610923565b5060808201518160040160006101000a81548160ff0219169083151502179055509050506000600560003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008201816000019080546001816001161561010002031660029004610600929190610983565b506001820160009054906101000a900460ff168160010160006101000a81548160ff02191690831515021790555060028201548160020155600382018160030190805461064e929190610a0a565b506004820160009054906101000a900460ff168160040160006101000a81548160ff021916908315150217905550905050505050565b6005602052806000526040600020600091509050806000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156107305780601f1061070557610100808354040283529160200191610730565b820191906000526020600020905b81548152906001019060200180831161071357829003601f168201915b5050505050908060010160009054906101000a900460ff16908060020154908060040160009054906101000a900460ff16905084565b6060600560003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060040160009054906101000a900460ff1615156107c357600080fd5b600560003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156108995780601f1061086e57610100808354040283529160200191610899565b820191906000526020600020905b81548152906001019060200180831161087c57829003601f168201915b5050505050905090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106108e457805160ff1916838001178555610912565b82800160010185558215610912579182015b828111156109115782518255916020019190600101906108f6565b5b50905061091f9190610a7a565b5090565b828054828255906000526020600020908101928215610972579160200282015b828111156109715782518290805190602001906109619291906108a3565b5091602001919060010190610943565b5b50905061097f9190610a9f565b5090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106109bc57805485556109f9565b828001600101855582156109f957600052602060002091601f016020900482015b828111156109f85782548255916001019190600101906109dd565b5b509050610a069190610a7a565b5090565b828054828255906000526020600020908101928215610a695760005260206000209182015b82811115610a685782829080546001816001161561010002031660029004610a58929190610983565b5091600101919060010190610a2f565b5b509050610a769190610a9f565b5090565b610a9c91905b80821115610a98576000816000905550600101610a80565b5090565b90565b610ac891905b80821115610ac45760008181610abb9190610acb565b50600101610aa5565b5090565b90565b50805460018160011615610100020316600290046000825580601f10610af15750610b10565b601f016020900490600052602060002090810190610b0f9190610a7a565b5b505600a165627a7a7230582062a74f74935578bba649cb0ba6d70ee7a8fca26ad012db4255a64c5925e8a98d0029",
+  "sourceMap": "25:1866:1:-;;;751:31;8:9:-1;5:2;;;30:1;27;20:12;5:2;751:31:1;25:1866;;;;;;",
+  "deployedSourceMap": "25:1866:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1674:215;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1674:215:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1674:215:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;905:460;;8:9:-1;5:2;;;30:1;27;20:12;5:2;905:460:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;217:38;;8:9:-1;5:2;;;30:1;27;20:12;5:2;217:38:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;217:38:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;786:115;;8:9:-1;5:2;;;30:1;27;20:12;5:2;786:115:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;786:115:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1674:215;1730:11;1743:13;1758:11;1785:5;:16;1791:9;1785:16;;;;;;;;;;;;;;;:23;;;;;;;;;;;;1776:32;;1825:5;:16;1831:9;1825:16;;;;;;;;;;;;;;;:25;;;;;;;;;;;;1814:36;;1863:5;:16;1869:9;1863:16;;;;;;;;;;;;;;;:21;;1856:28;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1674:215;;;;;:::o;905:460::-;1132:186;;;;;;;;;1158:4;1132:186;;;;1187:9;1132:186;;;;;;1224:12;1132:186;;;;1278:1;1263:17;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1132:186;;;;1303:4;1132:186;;;;;1122:7;:196;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1353:7;1333:5;:17;1339:10;1333:17;;;;;;;;;;;;;;;:27;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;905:460;;;:::o;217:38::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;786:115::-;851:6;392:5;:17;398:10;392:17;;;;;;;;;;;;;;;:24;;;;;;;;;;;;384:33;;;;;;;;873:5;:17;879:10;873:17;;;;;;;;;;;;;;;:22;;865:31;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;786:115;:::o;25:1866::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o",
+  "source": "pragma solidity ^0.4.7;\n\ncontract Authentication  {\n  \n  struct User{\n    string name;\n    bool isfarmer;\n    int creditScore; // can accept -ve values\n    string[] auctionIds;\n    bool exists;\n  }\n\n  User userObj;\n  mapping (address => User) public users;\n\n  uint private id; // Stores user id temporarily\n\n  modifier onlyExistingUser {\n    // Check if user exists or terminate\n\n    require(users[msg.sender].exists);\n    _;\n  }\n\n  // modifier onlyValidName(string name) {\n  //   // Only valid names allowed\n\n  //   require(!(name == 0x0));\n  //   _;\n  // }\n  \n  modifier shouldHaveValue(){\n      require(msg.value > 0);\n      _;\n  }\n  \n  modifier onlyFarmer(){\n      require(users[msg.sender].isfarmer, \"Caller is not a farmer!\");\n      _;\n  }\n  \n  constructor() public{      \n  }\n\n  function login() constant\n  public\n  onlyExistingUser\n  returns (string) {\n    return (users[msg.sender].name);\n  }\n\n  function signup(string name, bool _isFarmer, int _creditScore)\n  public{\n    // Check if user exists.\n    // If yes, return user name.\n    // If no, check if name was sent.\n    // If yes, create and return user.\n\n    userObj = User({\n            name : name,\n            isfarmer : _isFarmer,\n            creditScore : _creditScore,\n            auctionIds : new string [] (0),\n            exists : true\n        });\n        \n    users[msg.sender] = userObj;\n  }\n\n  // function update(string name)\n  // public\n  // onlyValidName(name)\n  // onlyExistingUser\n  // returns (string) {\n  //   // Update user name.\n    \n  //   if (users[msg.sender].name != 0x0)\n  //   {\n  //       users[msg.sender].name = name;\n\n  //       return (users[msg.sender].name);\n  //   }\n  // }\n\n  function getUser(address _userAddr) public view returns(bool exists, bool isFarmer, string name){\n    exists = users[_userAddr].exists;\n    isFarmer = users[_userAddr].isfarmer;\n    name = users[_userAddr].name;\n  }\n}\n",
+  "sourcePath": "/home/vishwasb/vab/projects/gramdhan/contracts/Authentication.sol",
+  "ast": {
+    "absolutePath": "/home/vishwasb/vab/projects/gramdhan/contracts/Authentication.sol",
+    "exportedSymbols": {
+      "Authentication": [
+        701
+      ]
+    },
+    "id": 702,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 561,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 701,
+        "linearizedBaseContracts": [
+          701
+        ],
+        "name": "Authentication",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Authentication.User",
+            "id": 573,
+            "members": [
+              {
+                "constant": false,
+                "id": 563,
+                "name": "name",
+                "nodeType": "VariableDeclaration",
+                "scope": 573,
+                "src": "74:11:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 562,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "74:6:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 565,
+                "name": "isfarmer",
+                "nodeType": "VariableDeclaration",
+                "scope": 573,
+                "src": "91:13:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 564,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "91:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 567,
+                "name": "creditScore",
+                "nodeType": "VariableDeclaration",
+                "scope": 573,
+                "src": "110:15:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_int256",
+                  "typeString": "int256"
+                },
+                "typeName": {
+                  "id": 566,
+                  "name": "int",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "110:3:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 570,
+                "name": "auctionIds",
+                "nodeType": "VariableDeclaration",
+                "scope": 573,
+                "src": "156:19:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_string_storage_$dyn_storage_ptr",
+                  "typeString": "string[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 568,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "156:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "id": 569,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "156:8:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_string_storage_$dyn_storage_ptr",
+                    "typeString": "string[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 572,
+                "name": "exists",
+                "nodeType": "VariableDeclaration",
+                "scope": 573,
+                "src": "181:11:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 571,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "181:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "User",
+            "nodeType": "StructDefinition",
+            "scope": 701,
+            "src": "57:140:1",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 575,
+            "name": "userObj",
+            "nodeType": "VariableDeclaration",
+            "scope": 701,
+            "src": "201:12:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_User_$573_storage",
+              "typeString": "struct Authentication.User"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 574,
+              "name": "User",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 573,
+              "src": "201:4:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_User_$573_storage_ptr",
+                "typeString": "struct Authentication.User"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 579,
+            "name": "users",
+            "nodeType": "VariableDeclaration",
+            "scope": 701,
+            "src": "217:38:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+              "typeString": "mapping(address => struct Authentication.User)"
+            },
+            "typeName": {
+              "id": 578,
+              "keyType": {
+                "id": 576,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "226:7:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "217:25:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+                "typeString": "mapping(address => struct Authentication.User)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 577,
+                "name": "User",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 573,
+                "src": "237:4:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_User_$573_storage_ptr",
+                  "typeString": "struct Authentication.User"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 581,
+            "name": "id",
+            "nodeType": "VariableDeclaration",
+            "scope": 701,
+            "src": "260:15:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 580,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "260:4:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 592,
+              "nodeType": "Block",
+              "src": "336:93:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 584,
+                            "name": "users",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 579,
+                            "src": "392:5:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+                              "typeString": "mapping(address => struct Authentication.User storage ref)"
+                            }
+                          },
+                          "id": 587,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 585,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2381,
+                              "src": "398:3:1",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 586,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "398:10:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "392:17:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_User_$573_storage",
+                            "typeString": "struct Authentication.User storage ref"
+                          }
+                        },
+                        "id": 588,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "exists",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 572,
+                        "src": "392:24:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 583,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        2384,
+                        2385
+                      ],
+                      "referencedDeclaration": 2384,
+                      "src": "384:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 589,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "384:33:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 590,
+                  "nodeType": "ExpressionStatement",
+                  "src": "384:33:1"
+                },
+                {
+                  "id": 591,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "423:1:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 593,
+            "name": "onlyExistingUser",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 582,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "336:0:1"
+            },
+            "src": "310:119:1",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 603,
+              "nodeType": "Block",
+              "src": "590:44:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 599,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 596,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2381,
+                            "src": "606:3:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 597,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "value",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "606:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": ">",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 598,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "618:1:1",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        },
+                        "src": "606:13:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 595,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        2384,
+                        2385
+                      ],
+                      "referencedDeclaration": 2384,
+                      "src": "598:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 600,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "598:22:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 601,
+                  "nodeType": "ExpressionStatement",
+                  "src": "598:22:1"
+                },
+                {
+                  "id": 602,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "628:1:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 604,
+            "name": "shouldHaveValue",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 594,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "588:2:1"
+            },
+            "src": "564:70:1",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 616,
+              "nodeType": "Block",
+              "src": "661:84:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 607,
+                            "name": "users",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 579,
+                            "src": "677:5:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+                              "typeString": "mapping(address => struct Authentication.User storage ref)"
+                            }
+                          },
+                          "id": 610,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 608,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2381,
+                              "src": "683:3:1",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 609,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "683:10:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "677:17:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_User_$573_storage",
+                            "typeString": "struct Authentication.User storage ref"
+                          }
+                        },
+                        "id": 611,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "isfarmer",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 565,
+                        "src": "677:26:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "43616c6c6572206973206e6f742061206661726d657221",
+                        "id": 612,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "705:25:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_c60aaf9dc3ec9930e1524c125633f2671289c2ead3c084e61227632bf3aeec8a",
+                          "typeString": "literal_string \"Caller is not a farmer!\""
+                        },
+                        "value": "Caller is not a farmer!"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_c60aaf9dc3ec9930e1524c125633f2671289c2ead3c084e61227632bf3aeec8a",
+                          "typeString": "literal_string \"Caller is not a farmer!\""
+                        }
+                      ],
+                      "id": 606,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        2384,
+                        2385
+                      ],
+                      "referencedDeclaration": 2385,
+                      "src": "669:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 613,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "669:62:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 614,
+                  "nodeType": "ExpressionStatement",
+                  "src": "669:62:1"
+                },
+                {
+                  "id": 615,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "739:1:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 617,
+            "name": "onlyFarmer",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 605,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "659:2:1"
+            },
+            "src": "640:105:1",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 620,
+              "nodeType": "Block",
+              "src": "771:11:1",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 621,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 618,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "762:2:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 619,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "771:0:1"
+            },
+            "scope": 701,
+            "src": "751:31:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 635,
+              "nodeType": "Block",
+              "src": "859:42:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 628,
+                            "name": "users",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 579,
+                            "src": "873:5:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+                              "typeString": "mapping(address => struct Authentication.User storage ref)"
+                            }
+                          },
+                          "id": 631,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 629,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2381,
+                              "src": "879:3:1",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 630,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "879:10:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "873:17:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_User_$573_storage",
+                            "typeString": "struct Authentication.User storage ref"
+                          }
+                        },
+                        "id": 632,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "name",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 563,
+                        "src": "873:22:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_storage",
+                          "typeString": "string storage ref"
+                        }
+                      }
+                    ],
+                    "id": 633,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "872:24:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 627,
+                  "id": 634,
+                  "nodeType": "Return",
+                  "src": "865:31:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 636,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 624,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 623,
+                  "name": "onlyExistingUser",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 593,
+                  "src": "823:16:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "823:16:1"
+              }
+            ],
+            "name": "login",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 622,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "800:2:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 627,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 626,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 636,
+                  "src": "851:6:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 625,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "851:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "850:8:1"
+            },
+            "scope": 701,
+            "src": "786:115:1",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 666,
+              "nodeType": "Block",
+              "src": "976:389:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 657,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 645,
+                      "name": "userObj",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 575,
+                      "src": "1122:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_User_$573_storage",
+                        "typeString": "struct Authentication.User storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 647,
+                          "name": "name",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 638,
+                          "src": "1158:4:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 648,
+                          "name": "_isFarmer",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 640,
+                          "src": "1187:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 649,
+                          "name": "_creditScore",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 642,
+                          "src": "1224:12:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_int256",
+                            "typeString": "int256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "30",
+                              "id": 653,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "1278:1:1",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              },
+                              "value": "0"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              }
+                            ],
+                            "id": 652,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "NewExpression",
+                            "src": "1263:13:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_string_memory_$dyn_memory_$",
+                              "typeString": "function (uint256) pure returns (string memory[] memory)"
+                            },
+                            "typeName": {
+                              "baseType": {
+                                "id": 650,
+                                "name": "string",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "1267:6:1",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_storage_ptr",
+                                  "typeString": "string"
+                                }
+                              },
+                              "id": 651,
+                              "length": null,
+                              "nodeType": "ArrayTypeName",
+                              "src": "1267:9:1",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_string_storage_$dyn_storage_ptr",
+                                "typeString": "string[]"
+                              }
+                            }
+                          },
+                          "id": 654,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1263:17:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_string_memory_$dyn_memory",
+                            "typeString": "string memory[] memory"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "74727565",
+                          "id": 655,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "bool",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1303:4:1",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "value": "true"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 646,
+                        "name": "User",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 573,
+                        "src": "1132:4:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_User_$573_storage_ptr_$",
+                          "typeString": "type(struct Authentication.User storage pointer)"
+                        }
+                      },
+                      "id": 656,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [
+                        "name",
+                        "isfarmer",
+                        "creditScore",
+                        "auctionIds",
+                        "exists"
+                      ],
+                      "nodeType": "FunctionCall",
+                      "src": "1132:186:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_User_$573_memory",
+                        "typeString": "struct Authentication.User memory"
+                      }
+                    },
+                    "src": "1122:196:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_User_$573_storage",
+                      "typeString": "struct Authentication.User storage ref"
+                    }
+                  },
+                  "id": 658,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1122:196:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 664,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 659,
+                        "name": "users",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 579,
+                        "src": "1333:5:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+                          "typeString": "mapping(address => struct Authentication.User storage ref)"
+                        }
+                      },
+                      "id": 662,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 660,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2381,
+                          "src": "1339:3:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 661,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "1339:10:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1333:17:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_User_$573_storage",
+                        "typeString": "struct Authentication.User storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 663,
+                      "name": "userObj",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 575,
+                      "src": "1353:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_User_$573_storage",
+                        "typeString": "struct Authentication.User storage ref"
+                      }
+                    },
+                    "src": "1333:27:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_User_$573_storage",
+                      "typeString": "struct Authentication.User storage ref"
+                    }
+                  },
+                  "id": 665,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1333:27:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 667,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "signup",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 643,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 638,
+                  "name": "name",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 667,
+                  "src": "921:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 637,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "921:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 640,
+                  "name": "_isFarmer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 667,
+                  "src": "934:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 639,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "934:4:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 642,
+                  "name": "_creditScore",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 667,
+                  "src": "950:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 641,
+                    "name": "int",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "950:3:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "920:47:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 644,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "976:0:1"
+            },
+            "scope": 701,
+            "src": "905:460:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 699,
+              "nodeType": "Block",
+              "src": "1770:119:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 683,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 678,
+                      "name": "exists",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 672,
+                      "src": "1776:6:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 679,
+                          "name": "users",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 579,
+                          "src": "1785:5:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+                            "typeString": "mapping(address => struct Authentication.User storage ref)"
+                          }
+                        },
+                        "id": 681,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 680,
+                          "name": "_userAddr",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 669,
+                          "src": "1791:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1785:16:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_User_$573_storage",
+                          "typeString": "struct Authentication.User storage ref"
+                        }
+                      },
+                      "id": 682,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "exists",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 572,
+                      "src": "1785:23:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "1776:32:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 684,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1776:32:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 690,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 685,
+                      "name": "isFarmer",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 674,
+                      "src": "1814:8:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 686,
+                          "name": "users",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 579,
+                          "src": "1825:5:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+                            "typeString": "mapping(address => struct Authentication.User storage ref)"
+                          }
+                        },
+                        "id": 688,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 687,
+                          "name": "_userAddr",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 669,
+                          "src": "1831:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1825:16:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_User_$573_storage",
+                          "typeString": "struct Authentication.User storage ref"
+                        }
+                      },
+                      "id": 689,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "isfarmer",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 565,
+                      "src": "1825:25:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "1814:36:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 691,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1814:36:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 697,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 692,
+                      "name": "name",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 676,
+                      "src": "1856:4:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 693,
+                          "name": "users",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 579,
+                          "src": "1863:5:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+                            "typeString": "mapping(address => struct Authentication.User storage ref)"
+                          }
+                        },
+                        "id": 695,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 694,
+                          "name": "_userAddr",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 669,
+                          "src": "1869:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1863:16:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_User_$573_storage",
+                          "typeString": "struct Authentication.User storage ref"
+                        }
+                      },
+                      "id": 696,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "name",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 563,
+                      "src": "1863:21:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "src": "1856:28:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory_ptr",
+                      "typeString": "string memory"
+                    }
+                  },
+                  "id": 698,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1856:28:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 700,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getUser",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 670,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 669,
+                  "name": "_userAddr",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 700,
+                  "src": "1691:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 668,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1691:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1690:19:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 677,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 672,
+                  "name": "exists",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 700,
+                  "src": "1730:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 671,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1730:4:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 674,
+                  "name": "isFarmer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 700,
+                  "src": "1743:13:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 673,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1743:4:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 676,
+                  "name": "name",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 700,
+                  "src": "1758:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 675,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1758:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1729:41:1"
+            },
+            "scope": 701,
+            "src": "1674:215:1",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 702,
+        "src": "25:1866:1"
+      }
+    ],
+    "src": "0:1892:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/vishwasb/vab/projects/gramdhan/contracts/Authentication.sol",
+    "exportedSymbols": {
+      "Authentication": [
+        701
+      ]
+    },
+    "id": 702,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 561,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".7"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 701,
+        "linearizedBaseContracts": [
+          701
+        ],
+        "name": "Authentication",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Authentication.User",
+            "id": 573,
+            "members": [
+              {
+                "constant": false,
+                "id": 563,
+                "name": "name",
+                "nodeType": "VariableDeclaration",
+                "scope": 573,
+                "src": "74:11:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 562,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "74:6:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 565,
+                "name": "isfarmer",
+                "nodeType": "VariableDeclaration",
+                "scope": 573,
+                "src": "91:13:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 564,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "91:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 567,
+                "name": "creditScore",
+                "nodeType": "VariableDeclaration",
+                "scope": 573,
+                "src": "110:15:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_int256",
+                  "typeString": "int256"
+                },
+                "typeName": {
+                  "id": 566,
+                  "name": "int",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "110:3:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 570,
+                "name": "auctionIds",
+                "nodeType": "VariableDeclaration",
+                "scope": 573,
+                "src": "156:19:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_string_storage_$dyn_storage_ptr",
+                  "typeString": "string[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 568,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "156:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "id": 569,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "156:8:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_string_storage_$dyn_storage_ptr",
+                    "typeString": "string[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 572,
+                "name": "exists",
+                "nodeType": "VariableDeclaration",
+                "scope": 573,
+                "src": "181:11:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 571,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "181:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "User",
+            "nodeType": "StructDefinition",
+            "scope": 701,
+            "src": "57:140:1",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 575,
+            "name": "userObj",
+            "nodeType": "VariableDeclaration",
+            "scope": 701,
+            "src": "201:12:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_User_$573_storage",
+              "typeString": "struct Authentication.User"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 574,
+              "name": "User",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 573,
+              "src": "201:4:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_User_$573_storage_ptr",
+                "typeString": "struct Authentication.User"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 579,
+            "name": "users",
+            "nodeType": "VariableDeclaration",
+            "scope": 701,
+            "src": "217:38:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+              "typeString": "mapping(address => struct Authentication.User)"
+            },
+            "typeName": {
+              "id": 578,
+              "keyType": {
+                "id": 576,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "226:7:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "217:25:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+                "typeString": "mapping(address => struct Authentication.User)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 577,
+                "name": "User",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 573,
+                "src": "237:4:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_User_$573_storage_ptr",
+                  "typeString": "struct Authentication.User"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 581,
+            "name": "id",
+            "nodeType": "VariableDeclaration",
+            "scope": 701,
+            "src": "260:15:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 580,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "260:4:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 592,
+              "nodeType": "Block",
+              "src": "336:93:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 584,
+                            "name": "users",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 579,
+                            "src": "392:5:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+                              "typeString": "mapping(address => struct Authentication.User storage ref)"
+                            }
+                          },
+                          "id": 587,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 585,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2381,
+                              "src": "398:3:1",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 586,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "398:10:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "392:17:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_User_$573_storage",
+                            "typeString": "struct Authentication.User storage ref"
+                          }
+                        },
+                        "id": 588,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "exists",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 572,
+                        "src": "392:24:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 583,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        2384,
+                        2385
+                      ],
+                      "referencedDeclaration": 2384,
+                      "src": "384:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 589,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "384:33:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 590,
+                  "nodeType": "ExpressionStatement",
+                  "src": "384:33:1"
+                },
+                {
+                  "id": 591,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "423:1:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 593,
+            "name": "onlyExistingUser",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 582,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "336:0:1"
+            },
+            "src": "310:119:1",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 603,
+              "nodeType": "Block",
+              "src": "590:44:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 599,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 596,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2381,
+                            "src": "606:3:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 597,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "value",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "606:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": ">",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 598,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "618:1:1",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        },
+                        "src": "606:13:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 595,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        2384,
+                        2385
+                      ],
+                      "referencedDeclaration": 2384,
+                      "src": "598:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 600,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "598:22:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 601,
+                  "nodeType": "ExpressionStatement",
+                  "src": "598:22:1"
+                },
+                {
+                  "id": 602,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "628:1:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 604,
+            "name": "shouldHaveValue",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 594,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "588:2:1"
+            },
+            "src": "564:70:1",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 616,
+              "nodeType": "Block",
+              "src": "661:84:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 607,
+                            "name": "users",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 579,
+                            "src": "677:5:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+                              "typeString": "mapping(address => struct Authentication.User storage ref)"
+                            }
+                          },
+                          "id": 610,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 608,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2381,
+                              "src": "683:3:1",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 609,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "683:10:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "677:17:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_User_$573_storage",
+                            "typeString": "struct Authentication.User storage ref"
+                          }
+                        },
+                        "id": 611,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "isfarmer",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 565,
+                        "src": "677:26:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "43616c6c6572206973206e6f742061206661726d657221",
+                        "id": 612,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "705:25:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_c60aaf9dc3ec9930e1524c125633f2671289c2ead3c084e61227632bf3aeec8a",
+                          "typeString": "literal_string \"Caller is not a farmer!\""
+                        },
+                        "value": "Caller is not a farmer!"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_c60aaf9dc3ec9930e1524c125633f2671289c2ead3c084e61227632bf3aeec8a",
+                          "typeString": "literal_string \"Caller is not a farmer!\""
+                        }
+                      ],
+                      "id": 606,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        2384,
+                        2385
+                      ],
+                      "referencedDeclaration": 2385,
+                      "src": "669:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 613,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "669:62:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 614,
+                  "nodeType": "ExpressionStatement",
+                  "src": "669:62:1"
+                },
+                {
+                  "id": 615,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "739:1:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 617,
+            "name": "onlyFarmer",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 605,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "659:2:1"
+            },
+            "src": "640:105:1",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 620,
+              "nodeType": "Block",
+              "src": "771:11:1",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 621,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 618,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "762:2:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 619,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "771:0:1"
+            },
+            "scope": 701,
+            "src": "751:31:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 635,
+              "nodeType": "Block",
+              "src": "859:42:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 628,
+                            "name": "users",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 579,
+                            "src": "873:5:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+                              "typeString": "mapping(address => struct Authentication.User storage ref)"
+                            }
+                          },
+                          "id": 631,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 629,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2381,
+                              "src": "879:3:1",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 630,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "879:10:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "873:17:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_User_$573_storage",
+                            "typeString": "struct Authentication.User storage ref"
+                          }
+                        },
+                        "id": 632,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "name",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 563,
+                        "src": "873:22:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_storage",
+                          "typeString": "string storage ref"
+                        }
+                      }
+                    ],
+                    "id": 633,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "872:24:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 627,
+                  "id": 634,
+                  "nodeType": "Return",
+                  "src": "865:31:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 636,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 624,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 623,
+                  "name": "onlyExistingUser",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 593,
+                  "src": "823:16:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "823:16:1"
+              }
+            ],
+            "name": "login",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 622,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "800:2:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 627,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 626,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 636,
+                  "src": "851:6:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 625,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "851:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "850:8:1"
+            },
+            "scope": 701,
+            "src": "786:115:1",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 666,
+              "nodeType": "Block",
+              "src": "976:389:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 657,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 645,
+                      "name": "userObj",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 575,
+                      "src": "1122:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_User_$573_storage",
+                        "typeString": "struct Authentication.User storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 647,
+                          "name": "name",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 638,
+                          "src": "1158:4:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 648,
+                          "name": "_isFarmer",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 640,
+                          "src": "1187:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 649,
+                          "name": "_creditScore",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 642,
+                          "src": "1224:12:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_int256",
+                            "typeString": "int256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "30",
+                              "id": 653,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "1278:1:1",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              },
+                              "value": "0"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              }
+                            ],
+                            "id": 652,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "NewExpression",
+                            "src": "1263:13:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_string_memory_$dyn_memory_$",
+                              "typeString": "function (uint256) pure returns (string memory[] memory)"
+                            },
+                            "typeName": {
+                              "baseType": {
+                                "id": 650,
+                                "name": "string",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "1267:6:1",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_storage_ptr",
+                                  "typeString": "string"
+                                }
+                              },
+                              "id": 651,
+                              "length": null,
+                              "nodeType": "ArrayTypeName",
+                              "src": "1267:9:1",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_string_storage_$dyn_storage_ptr",
+                                "typeString": "string[]"
+                              }
+                            }
+                          },
+                          "id": 654,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1263:17:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_string_memory_$dyn_memory",
+                            "typeString": "string memory[] memory"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "74727565",
+                          "id": 655,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "bool",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1303:4:1",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "value": "true"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 646,
+                        "name": "User",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 573,
+                        "src": "1132:4:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_User_$573_storage_ptr_$",
+                          "typeString": "type(struct Authentication.User storage pointer)"
+                        }
+                      },
+                      "id": 656,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [
+                        "name",
+                        "isfarmer",
+                        "creditScore",
+                        "auctionIds",
+                        "exists"
+                      ],
+                      "nodeType": "FunctionCall",
+                      "src": "1132:186:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_User_$573_memory",
+                        "typeString": "struct Authentication.User memory"
+                      }
+                    },
+                    "src": "1122:196:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_User_$573_storage",
+                      "typeString": "struct Authentication.User storage ref"
+                    }
+                  },
+                  "id": 658,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1122:196:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 664,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 659,
+                        "name": "users",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 579,
+                        "src": "1333:5:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+                          "typeString": "mapping(address => struct Authentication.User storage ref)"
+                        }
+                      },
+                      "id": 662,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 660,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2381,
+                          "src": "1339:3:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 661,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "1339:10:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1333:17:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_User_$573_storage",
+                        "typeString": "struct Authentication.User storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 663,
+                      "name": "userObj",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 575,
+                      "src": "1353:7:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_User_$573_storage",
+                        "typeString": "struct Authentication.User storage ref"
+                      }
+                    },
+                    "src": "1333:27:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_User_$573_storage",
+                      "typeString": "struct Authentication.User storage ref"
+                    }
+                  },
+                  "id": 665,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1333:27:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 667,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "signup",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 643,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 638,
+                  "name": "name",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 667,
+                  "src": "921:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 637,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "921:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 640,
+                  "name": "_isFarmer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 667,
+                  "src": "934:14:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 639,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "934:4:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 642,
+                  "name": "_creditScore",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 667,
+                  "src": "950:16:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 641,
+                    "name": "int",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "950:3:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "920:47:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 644,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "976:0:1"
+            },
+            "scope": 701,
+            "src": "905:460:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 699,
+              "nodeType": "Block",
+              "src": "1770:119:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 683,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 678,
+                      "name": "exists",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 672,
+                      "src": "1776:6:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 679,
+                          "name": "users",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 579,
+                          "src": "1785:5:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+                            "typeString": "mapping(address => struct Authentication.User storage ref)"
+                          }
+                        },
+                        "id": 681,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 680,
+                          "name": "_userAddr",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 669,
+                          "src": "1791:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1785:16:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_User_$573_storage",
+                          "typeString": "struct Authentication.User storage ref"
+                        }
+                      },
+                      "id": 682,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "exists",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 572,
+                      "src": "1785:23:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "1776:32:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 684,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1776:32:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 690,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 685,
+                      "name": "isFarmer",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 674,
+                      "src": "1814:8:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 686,
+                          "name": "users",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 579,
+                          "src": "1825:5:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+                            "typeString": "mapping(address => struct Authentication.User storage ref)"
+                          }
+                        },
+                        "id": 688,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 687,
+                          "name": "_userAddr",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 669,
+                          "src": "1831:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1825:16:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_User_$573_storage",
+                          "typeString": "struct Authentication.User storage ref"
+                        }
+                      },
+                      "id": 689,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "isfarmer",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 565,
+                      "src": "1825:25:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "1814:36:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 691,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1814:36:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 697,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 692,
+                      "name": "name",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 676,
+                      "src": "1856:4:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 693,
+                          "name": "users",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 579,
+                          "src": "1863:5:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$573_storage_$",
+                            "typeString": "mapping(address => struct Authentication.User storage ref)"
+                          }
+                        },
+                        "id": 695,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 694,
+                          "name": "_userAddr",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 669,
+                          "src": "1869:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1863:16:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_User_$573_storage",
+                          "typeString": "struct Authentication.User storage ref"
+                        }
+                      },
+                      "id": 696,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "name",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 563,
+                      "src": "1863:21:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "src": "1856:28:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory_ptr",
+                      "typeString": "string memory"
+                    }
+                  },
+                  "id": 698,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1856:28:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 700,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getUser",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 670,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 669,
+                  "name": "_userAddr",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 700,
+                  "src": "1691:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 668,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1691:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1690:19:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 677,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 672,
+                  "name": "exists",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 700,
+                  "src": "1730:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 671,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1730:4:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 674,
+                  "name": "isFarmer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 700,
+                  "src": "1743:13:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 673,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1743:4:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 676,
+                  "name": "name",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 700,
+                  "src": "1758:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 675,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1758:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1729:41:1"
+            },
+            "scope": 701,
+            "src": "1674:215:1",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 702,
+        "src": "25:1866:1"
+      }
+    ],
+    "src": "0:1892:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-09-05T09:50:01.667Z"
+}
